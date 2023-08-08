@@ -12,7 +12,7 @@ const usuariosGet = (req = request, res = response) => {
 };
 
 const usuariosPut = (req, res = response) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
 
   res.status(403).json({
     msg: "put API - usuarios Put",
