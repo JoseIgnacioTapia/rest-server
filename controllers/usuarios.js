@@ -42,8 +42,7 @@ const usuariosPost = async (req, res = response) => {
   // Guardar en BD
   await usuario.save();
 
-  res.status(403).json({
-    msg: "post API - Usuarios Post",
+  res.json({
     usuario,
   });
 };
