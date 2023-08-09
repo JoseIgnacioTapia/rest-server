@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { check } = require("express-validator");
 
 const { validarCampos } = require("../middlewares/validar-campos");
-const { esRoleValido } = require("../helpers/db-validators");
+const { esRoleValido, emailExiste } = require("../helpers/db-validators");
 
 const {
   usuariosGet,
@@ -26,6 +26,7 @@ router.post(
       min: 6,
     }),
     check("correo", "El correo no es válido").isEmail(),
+    check("correo").custom(emailExiste),
     // check("rol", "El correo no es válido").isIn(["ADMIN_ROLE", "USER_ROLE"]),
     check("rol").custom(esRoleValido),
     validarCampos,
