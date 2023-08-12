@@ -12,8 +12,8 @@ const validarJWT = (req = request, res = response, next) => {
   }
 
   try {
-    const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
-    console.log(payload);
+    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    console.log(uid);
     req.uid = uid;
 
     next();
