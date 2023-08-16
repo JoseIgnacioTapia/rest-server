@@ -25,7 +25,7 @@
       data-logo_alignment="left"
     ></div>
 
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <button id="google_signout" onclick="cerrarSesion()">Signout</button>
 
     <script>
       function handleCredentialResponse(response) {
@@ -43,9 +43,32 @@
           .then((resp) => resp.json())
           .then((resp) => {
             console.log(resp);
+            localStorage.setItem("email", resp.usuario.correo);
           })
           .catch(console.warn);
       }
+
+      // const button = document.getElementById("google_signout");
+      // button.onClick = () => {
+      //   console.log(google.accounts.id);
+      //   google.accounts.id.disableAutoSelect();
+
+      //   google.accounts.id.revoke(localStorage.getItem("email"), (done) => {
+      //     localStorage.clear();
+      //     location.reload();
+      //   });
+      // };
+
+      function cerrarSesion() {
+        google.accounts.id.disableAutoSelect();
+
+        google.accounts.id.revoke(localStorage.getItem("email"), (done) => {
+          localStorage.clear();
+          location.reload();
+        });
+      }
     </script>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </body>
 </html>
