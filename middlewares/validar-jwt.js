@@ -18,6 +18,7 @@ const validarJWT = async (req = request, res = response, next) => {
 
     // leer el usuario que corresponda al uid
     const usuario = await Usuario.findById(uid);
+    console.log(usuario);
 
     if (!usuario) {
       return res.status(401).json({
