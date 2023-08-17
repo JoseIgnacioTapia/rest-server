@@ -18,4 +18,10 @@ const CategoriaSchema = Schema({
   },
 });
 
+// Excluimos __v y estado de la data a enviar
+CategoriaSchema.methods.toJSON = function () {
+  const { __v, estado, ...data } = this.toObject();
+  return data;
+};
+
 module.exports = model("Categoria", CategoriaSchema);
