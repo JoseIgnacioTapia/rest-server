@@ -44,7 +44,7 @@ const buscarCategorias = async (termino = "", res = response) => {
     nombre: regex,
     estado: true,
   });
-  // Improve the search with Count
+  // Improve the search with Count as challenger
 
   res.json({
     results: categorias,
